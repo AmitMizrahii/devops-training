@@ -38,7 +38,7 @@ jobs:
           ECR_REGISTRY: ${{ env.REGISTRY_END_POINT }}
           IMAGE_TAG: amit
         run: |
-          docker buildx build --platform linux/amd64 -t the-image .
+          docker  build  -t the-image .
           docker tag the-image the-image:$IMAGE_TAG
           docker push $ECR_REGISTRY/the-image:$IMAGE_TAG
 
