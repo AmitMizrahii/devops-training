@@ -40,7 +40,7 @@ jobs:
         run: |
           docker  build  -t the-image .
           docker tag the-image $ECR_REGISTRY/the-image:latest
-          docker push $ECR_REGISTRY
+          docker push latest
 
       - name: Output image digest
         run: |
