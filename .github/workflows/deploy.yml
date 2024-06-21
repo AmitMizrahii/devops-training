@@ -38,7 +38,7 @@ jobs:
           ECR_REGISTRY: ${{ env.REGISTRY_END_POINT }}
           IMAGE_TAG: amit
         run: |
-          docker  build  -t $ECR_REGISTRY/the-image:latest
+          docker build  -t $ECR_REGISTRY/the-image:latest .
           docker push $ECR_REGISTRY/the-image:latest
 
       - name: Output image digest
