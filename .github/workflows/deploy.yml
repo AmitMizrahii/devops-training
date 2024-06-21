@@ -36,7 +36,7 @@ jobs:
       - name: Build, tag, and push Docker image
         env:
           ECR_REGISTRY: ${{ env.REGISTRY_END_POINT }}
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: amit
         run: |
           docker buildx build --platform linux/amd64 -t $ECR_REGISTRY:$IMAGE_TAG .
           docker push $ECR_REGISTRY:$IMAGE_TAG
