@@ -38,10 +38,11 @@ jobs:
           ECR_REGISTRY: ${{ env.REGISTRY_END_POINT }}
           IMAGE_TAG: amit
         run: |
-          docker buildx build --platform linux/amd64 -t hi:$IMAGE_TAG .
-          docker push hi:$IMAGE_TAG
+          docker buildx build --platform linux/amd64 -t the-image .
+          docker tag the-image the-image:$IMAGE_TAG
+          docker push $ECR_REGISTRY/the-image:$IMAGE_TAG
 
       - name: Output image digest
         run: |
-          IMAGE_DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' $ECR_REGISTRY:$IMAGE_TAG)
-          echo "IMAGE_DIGEST=$IMAGE_DIGEST" >> $GITHUB_ENV
+          IMAGE_DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' $ECR_REGISTRY/the-image:$IMAGE_TAG)
+          echo "IMAGE_DIGEST=$IMAGE_DIGEST" >> $GITHUB_EN
