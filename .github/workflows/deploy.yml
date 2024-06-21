@@ -39,6 +39,7 @@ jobs:
           IMAGE_TAG: amit
         run: |
           docker buildx build --platform linux/amd64 -t $ECR_REGISTRY:$IMAGE_TAG .
+          docker tag $ECR_REGISTRY:$IMAGE_TAG $ECR_REGISTRY:$IMAGE_TAG
           docker push $ECR_REGISTRY:$IMAGE_TAG
 
       - name: Output image digest
