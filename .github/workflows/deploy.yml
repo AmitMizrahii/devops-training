@@ -39,7 +39,7 @@ jobs:
           IMAGE_TAG: amit
         run: |
           docker  build  -t the-image .
-          docker tag the-image the-image:$IMAGE_TAG
+          docker tag the-image $ECR_REGISTRY/the-image:$IMAGE_TAG
           docker push $ECR_REGISTRY
 
       - name: Output image digest
